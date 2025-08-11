@@ -25,7 +25,7 @@ Structured Output :
 
 Returns results in JSON format for easy display.  
 Example:
-```json
+json
 {
   "title": "Frontend Developer",
   "company": "TechCorp",
