@@ -40,9 +40,8 @@ Fetches verified interview tips, resume improvement suggestions, and industry in
 
 
 ## 🚀 Features :
-
-- **Personalized Job Recommendations** – Matches jobs to user skills and preferences.
-- **Resume Optimization** – Suggests improvements for better ATS compatibility.
-- **Real-Time Job Fetching** – Integrates with job listing APIs.
-- **Structured Job Listings** – Outputs clean JSON data for easy display.
-- **Interview Guidance** – Offers tailored tips using a curated knowledge base.
+**Personalized Job Recommendations** – Matches jobs to user skills and preferences.
+**Resume Optimization** – Suggests improvements for better ATS compatibility.
+**Real-Time Job Fetching** – Integrates with job listing APIs.
+**Structured Job Listings** – Outputs clean JSON data for easy display.
+**Interview Guidance** – Offers tailored tips using a curated knowledge base.
