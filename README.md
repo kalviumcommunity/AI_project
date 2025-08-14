@@ -17,18 +17,6 @@ Example: *"Find me a frontend developer job in Bangalore"*.
 **Function Calling:**  
 Automatically triggers APIs for job listings, salary data, or resume analysis.
 
-**Structured Output:**  
-Returns results in JSON format for easy display.  
-Example:
-```json
-{
-  "title": "Frontend Developer",
-  "company": "TechCorp",
-  "location": "Bangalore",
-  "salary": "₹8-10 LPA"
-}
-```
-
 **Retrieval-Augmented Generation (RAG):**  
 Fetches verified interview tips, resume improvement suggestions, and industry insights from a stored knowledge base, then merges them with the AI's response.
 
