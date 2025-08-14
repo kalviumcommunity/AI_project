@@ -1,20 +1,13 @@
-import random
-from config import get_model
-from companies_data import COMPANIES_BY_STATE
+from config import MODEL_NAME
+import google.generativeai as genai
 
-def generate_job_application(role, experience, person_location, features):
-    companies = COMPANIES_BY_STATE.get(person_location, [("Generic Tech Solutions", person_location)])
-    company_name, company_city = random.choice(companies)
-
+def generate_job_application(role, years, location, features):
     prompt = f"""
-    You are an expert career writer.
-    Create a professional job application letter for:
-    Role: {role}
-    Experience: {experience} years
-    Skills: {features}
-    Company Name: {company_name}
-    Company Location: {company_city}
+    Generate a formal job application letter for the role of {role}
+    with {years} years of experience, applying for jobs in {location}.
+    Highlight the following skills/features: {features}.
+    Also, automatically find and include a realistic company name and city in that location.
     """
-    model = get_model()
+    model = genai.GenerativeModel(MODEL_NAME)
     response = model.generate_content(prompt)
-    return company_name, company_city, response.text.strip()
+    return response.text

@@ -1,30 +1,17 @@
+from config import MODEL_NAME
 import google.generativeai as genai
-from config import GEMINI_API_KEY
 
-genai.configure(api_key=GEMINI_API_KEY)
-
-def generate_resume(full_name, contact, education, experience, skills):
-    model = genai.GenerativeModel("gemini-1.5-pro")
-
+def generate_resume(name, contact, education, experience, skills):
     prompt = f"""
-    Create a complete, professional resume in markdown format for the following details:
-
-    Full Name: {full_name}
+    Create a professional, complete, ready-to-use resume in Markdown format for:
+    Name: {name}
     Contact: {contact}
     Education: {education}
-    Years of Experience: {experience}
+    Experience: {experience} years
     Skills: {skills}
 
-    Include:
-    - A short, impactful professional summary at the top
-    - Detailed education section
-    - Detailed experience section with company names, positions, and quantified achievements
-    - Skills section (formatted cleanly)
-    - Optional Projects section based on skills
-    - Clean markdown formatting
-
-    Do NOT include placeholders like [Company Name] or [University Name].
+    Make sure the resume is fully filled with realistic job titles, companies, and bullet points.
     """
-
+    model = genai.GenerativeModel(MODEL_NAME)
     response = model.generate_content(prompt)
     return response.text
