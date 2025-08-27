@@ -15,7 +15,7 @@ Understands user queries in plain language.
 Example: *"Find me a frontend developer job in Bangalore"*.
 
 **Function Calling:**  
-Automatically triggers APIs for job listings, salary data, or resume analysis.
+Automatically triggers APIs for job listings, or resume analysis.
 
 **Retrieval-Augmented Generation (RAG):**  
 Fetches verified interview tips, resume improvement suggestions, and industry insights from a stored knowledge base, then merges them with the AI's response.
