@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 from job_application import generate_job_application
 from resume_generator import generate_resume
 from job_search import search_jobs
+from interview_questions import generate_interview_questions 
 
-# Load environment variables
 load_dotenv()
 
 while True:
@@ -12,7 +12,8 @@ while True:
     print("1. Search for jobs")
     print("2. Generate Job Application")
     print("3. Generate Resume")
-    print("4. Exit")
+    print("4. Generate Interview Questions (Zero-Shot)") 
+    print("5. Exit") 
     choice = input("Choose an option: ")
 
     if choice == "1":
@@ -22,7 +23,6 @@ while True:
         print("\n=== Job Search Results ===")
         for job in search_jobs(role, years, state):
             print(f"- {job['title']} at {job['company']} ({job['location']})")
-
 
     elif choice == "2":
         role = input("Enter job role: ")
@@ -42,6 +42,15 @@ while True:
         print(generate_resume(name, contact, education, experience, skills))
 
     elif choice == "4":
+        role = input("Role for interview prep: ")
+        years = input("Years of experience: ")
+        location = input("Location: ")
+        print("\n=== Zero-Shot Interview Questions ===")
+        qs = generate_interview_questions(role, years, location)
+        for i, q in enumerate(qs, 1):
+            print(f"{i}. {q}")
+
+    elif choice == "5":
         print("Thank you")
         break
 
