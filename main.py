@@ -5,7 +5,7 @@ from resume_generator import generate_resume
 from job_search import search_jobs
 from prompts.zero_shot import generate_zero_shot_questions  
 from prompts.one_shot import generate_one_shot_questions
-
+from prompts.multi_shot import generate_multi_shot_questions   
 load_dotenv()
 
 def main():
@@ -16,7 +16,8 @@ def main():
         print("3. Generate Resume")
         print("4. Generate Interview Questions (Zero-Shot)") 
         print("5. Generate Interview Questions (One-Shot)")
-        print("6. Exit") 
+        print("6. Generate Interview Questions (Multi-Shot)") 
+        print("7. Exit") 
 
         choice = input("Choose an option: ").strip()
 
@@ -61,7 +62,6 @@ def main():
             else:
                 print("⚠️ No questions generated. Check your `zero_shot.py` implementation.")
 
-            
         elif choice == "5":
             role = input("Role for interview prep: ").strip()
             experience = input("Years of experience: ").strip()
@@ -75,6 +75,18 @@ def main():
                 print("⚠️ No questions generated. Check your `one_shot.py` implementation.") 
 
         elif choice == "6":
+            role = input("Role for interview prep: ").strip()
+            experience = input("Years of experience: ").strip()
+            location = input("Location: ").strip()
+            qs = generate_multi_shot_questions(role, experience, location)  # ✅ call multi-shot
+            print("\n=== Multi-Shot Interview Questions ===")
+            if qs and isinstance(qs, list):
+                for i, q in enumerate(qs, 1):
+                    print(f"{i}. {q}")
+            else:
+                print("⚠️ No questions generated. Check your `multi_shot.py` implementation.")
+
+        elif choice == "7":
             print("✅ Thank you for using AI Job Assistant!")
             break
 
