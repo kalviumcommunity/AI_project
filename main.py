@@ -91,9 +91,11 @@ def main():
                 print("⚠️ No questions generated. Check your `multi_shot.py` implementation.")
         elif choice == "7":
             question = input("Enter your reasoning question: ").strip()
+            temp = float(input("Enter temperature (0.0 - 1.0): ").strip()) 
             print("\n=== Chain-of-Thought Answer ===")
-            answer = generate_chain_of_thought_answer(question)
+            answer = generate_chain_of_thought_answer(question, temp) 
             print(answer)
+
 
         elif choice == "8":
             print("✅ Thank you for using AI Job Assistant!")
