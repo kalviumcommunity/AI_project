@@ -5,7 +5,9 @@ from resume_generator import generate_resume
 from job_search import search_jobs
 from prompts.zero_shot import generate_zero_shot_questions  
 from prompts.one_shot import generate_one_shot_questions
-from prompts.multi_shot import generate_multi_shot_questions   
+from prompts.multi_shot import generate_multi_shot_questions
+from prompts.chain_of_thought import generate_chain_of_thought_answer
+
 load_dotenv()
 
 def main():
@@ -17,7 +19,9 @@ def main():
         print("4. Generate Interview Questions (Zero-Shot)") 
         print("5. Generate Interview Questions (One-Shot)")
         print("6. Generate Interview Questions (Multi-Shot)") 
-        print("7. Exit") 
+        print("7. Solve Reasoning Question (Chain-of-Thought)")
+        print("8. Exit")
+
 
         choice = input("Choose an option: ").strip()
 
@@ -85,8 +89,13 @@ def main():
                     print(f"{i}. {q}")
             else:
                 print("⚠️ No questions generated. Check your `multi_shot.py` implementation.")
-
         elif choice == "7":
+            question = input("Enter your reasoning question: ").strip()
+            print("\n=== Chain-of-Thought Answer ===")
+            answer = generate_chain_of_thought_answer(question)
+            print(answer)
+
+        elif choice == "8":
             print("✅ Thank you for using AI Job Assistant!")
             break
 
