@@ -22,7 +22,6 @@ def main():
         print("7. Solve Reasoning Question (Chain-of-Thought)")
         print("8. Exit")
 
-
         choice = input("Choose an option: ").strip()
 
         if choice == "1":
@@ -82,20 +81,21 @@ def main():
             role = input("Role for interview prep: ").strip()
             experience = input("Years of experience: ").strip()
             location = input("Location: ").strip()
-            qs = generate_multi_shot_questions(role, experience, location)  # ✅ call multi-shot
+            qs = generate_multi_shot_questions(role, experience, location)  
             print("\n=== Multi-Shot Interview Questions ===")
             if qs and isinstance(qs, list):
                 for i, q in enumerate(qs, 1):
                     print(f"{i}. {q}")
             else:
                 print("⚠️ No questions generated. Check your `multi_shot.py` implementation.")
+
         elif choice == "7":
             question = input("Enter your reasoning question: ").strip()
-            temp = float(input("Enter temperature (0.0 - 1.0): ").strip()) 
+            temp = float(input("Enter temperature (0.0 - 1.0): ").strip())
+            top_k = int(input("Enter Top-K value (e.g., 40): ").strip())
             print("\n=== Chain-of-Thought Answer ===")
-            answer = generate_chain_of_thought_answer(question, temp) 
+            answer = generate_chain_of_thought_answer(question, temp, top_k)
             print(answer)
-
 
         elif choice == "8":
             print("✅ Thank you for using AI Job Assistant!")
