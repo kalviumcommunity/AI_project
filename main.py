@@ -93,8 +93,9 @@ def main():
             question = input("Enter your reasoning question: ").strip()
             temp = float(input("Enter temperature (0.0 - 1.0): ").strip())
             top_k = int(input("Enter Top-K value (e.g., 40): ").strip())
+            stop_seq = input("Enter stop sequence (default: Final Answer:): ").strip() or "Final Answer:"
             print("\n=== Chain-of-Thought Answer ===")
-            answer = generate_chain_of_thought_answer(question, temp, top_k)
+            answer = generate_chain_of_thought_answer(question, temp, top_k, stop_seq)
             print(answer)
 
         elif choice == "8":
