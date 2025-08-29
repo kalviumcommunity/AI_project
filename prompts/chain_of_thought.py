@@ -5,11 +5,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-def generate_chain_of_thought_answer(question: str, temperature: float = 0.7, top_k: int = 40):
-    """
-    Generate a reasoning answer with chain-of-thought using Gemini,
-    supporting temperature and top_k for better control.
-    """
+def generate_chain_of_thought_answer(question: str, temperature: float = 0.7, top_k: int = 40, stop_seq: str = "Final Answer:"):
     prompt = f"""
 You are an AI that solves reasoning problems step by step.
 Show your reasoning process clearly and then give the final answer.
@@ -26,7 +22,8 @@ Final Answer: ...
         prompt,
         generation_config={
             "temperature": temperature,
-            "top_k": top_k
+            "top_k": top_k,
+            "stop_sequences": [stop_seq]   
         }
     )
     return response.text
